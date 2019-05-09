@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'test.css' %}">
+</head>
+<body>
+    <h1>남재용의 책 읽는 교실</h1>
+    {% block content %}
+    <h2> 글 목록 </h2>
+    {% for review in reviews %}      
+       <div>
+       <li><a href="{% url 'detail' review.pk %}">{{ review.title }}</a></li><br>  
+        <img src="{{ review.img.url }}"/>
+        </div>
+    {% endfor %}  
+              <a href="{% url 'new' %}">쓰기</a>
+     {% endblock %}
+     <img src="{% static 'main_thumb.jpg' %}" alt="">
+</body>
+</html>
